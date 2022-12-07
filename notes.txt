@@ -1,0 +1,28 @@
+Typical react app layout:
+There is usually an app component -- in index.js. It is typically the one js file that is rendered
+into the DOM -- It has the render return syntax:
+    render() {
+        return (
+
+        )
+    }
+It is like the entry point into our code.
+
+-------------------------------
+***PROPS ARE IMMUTABLE. You can't manually change them (only through state and re-rendering)
+when you're passing props, you don't have to use the curly braces if they're strings; you do so
+otherwise.
+------------------------------
+To start the node server, -- npm start
+---------------------------------------
+    IMPORTS AND EXPORTS
+***If you have a js file with multiple functions that you would like to export,
+    then you export like so at the bottom;
+        export { sing, bathe, dance };
+
+    Then in the file that does the import (the below is if you want juat 1 func from the file),
+    import { bathe } from './helper.js';
+
+**You can also do default exports and optional exports simultaneously:
+    export default sing();
+    export { bathe, dance };
