@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Pokedex from './Pokedex';
 
 class Pokegame extends Component {
-    static defaultProps = {
+    static defaultProps = { //only used if props are not passed from parent component
         pokemon: [
             {id: 4, name: 'Charmander', type: 'fire', base_experience: 62},
             {id: 7, name: 'Squirtle', type: 'water', base_experience: 63},
@@ -14,6 +14,7 @@ class Pokegame extends Component {
             {id: 133, name: 'Eevee', type: 'normal', base_experience: 65}
           ]
     }
+    
     render() {
         let hand1 = [];
         let hand2 = [...this.props.pokemon];
