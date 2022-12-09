@@ -3,7 +3,7 @@ import Pokecard from './Pokecard';
 import './Pokedex.css'
 
 class Pokedex extends Component {
-    static defaultProps = {
+    static defaultProps = { //only used if props are not passed from parent component
         pokemon: [
             {id: 4, name: 'Charmander', type: 'fire', base_experience: 62},
             {id: 7, name: 'Squirtle', type: 'water', base_experience: 63},
@@ -20,6 +20,8 @@ class Pokedex extends Component {
         return (
             <div className='Pokedex'>
                 <h1>Pokedex!</h1>
+                <p>{this.props.exp}</p>
+                <p>{this.props.isWinner ? "Winner!" : "Loser!"}</p>
                 <div className='Pokedex-cards'>
                     {this.props.pokemon.map((pokemon) => (
                         <Pokecard id={pokemon.id} name={pokemon.name} type={pokemon.type} exp={pokemon.base_experience}/>
