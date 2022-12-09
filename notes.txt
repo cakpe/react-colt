@@ -26,3 +26,6 @@ To start the node server, -- npm start
 **You can also do default exports and optional exports simultaneously:
     export default sing;
     export { bathe, dance };
+----------------------------------------
+If you want to style something that would affect the entire app, do it in index.css
+It's also good practice to delete the default styling in App.css that comes with create-react-app

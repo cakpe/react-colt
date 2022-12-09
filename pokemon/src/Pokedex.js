@@ -1,5 +1,6 @@
 import React, { Component } from 'react' // tip: type imrc to auto-import this linee. Have to download react snippets extension
 import Pokecard from './Pokecard';
+import './Pokedex.css'
 
 class Pokedex extends Component {
     static defaultProps = {
@@ -19,9 +20,11 @@ class Pokedex extends Component {
         return (
             <div className='Pokedex'>
                 <h1>Pokedex!</h1>
-                {this.props.pokemon.map((pokemon) => (
-                    <Pokecard id={pokemon.id} name={pokemon.name} type={pokemon.type} exp={pokemon.base_experience}/>
-            ))}
+                <div className='Pokedex-cards'>
+                    {this.props.pokemon.map((pokemon) => (
+                        <Pokecard id={pokemon.id} name={pokemon.name} type={pokemon.type} exp={pokemon.base_experience}/>
+                    ))}
+                </div>
             </div>
         )
     }

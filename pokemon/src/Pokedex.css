@@ -1,0 +1,5 @@
+.Pokedex-cards {
+    display: flex; /* horizontal display instead of vertical */
+    justify-content: space-between;
+    flex-wrap: wrap; /* allow wrap of items to next line */
+}
