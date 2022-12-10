@@ -29,3 +29,29 @@ To start the node server, -- npm start
 ----------------------------------------
 If you want to style something that would affect the entire app, do it in index.css
 It's also good practice to delete the default styling in App.css that comes with create-react-app
+----------------------------------------
+STATE IN CLASS COMPONENTS
+Syntax:
+If you are building a component with state, you need a standard react constructor:
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        }
+    }
+
+***THE ABOVE SYNTAX IS IF YOU'RE WRITING A CLASS COMPONENT. With a functon component, you use react hooks (useState)
+****If you're using props in the constructor, that line super(props) must be there. Otherwise, you can just have super()
+
+*****YOU SHOULD NOT SET STATE INSIDE THE CONTRUCTOR OR YOUR RENDER() function
+
+***alternate newer way of declaring state:
+    state = { clicked: false };
+----------------------------------------
+When creating click events, you need to bind the functions to the class.
+Method 1 (in the constructor):
+    this.handleClick = this.handleClick.bind(this);
+Method 2 (fat arrow syntax when you define the click):
+    handleClick = () => {
+        console.log("Clicked");
+    }
