@@ -4,7 +4,7 @@ import { faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix } 
 import './RollDice.css'
 
 class RollDice extends Component {
-    state = { diceOne: 0, diceTwo: 0 };
+    state = { diceOne: 0, diceTwo: 0, rolling: false };
     static defaultProps = {
         faces: [faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix]
     };
@@ -13,7 +13,12 @@ class RollDice extends Component {
         let faceOne = Math.floor(Math.random() * this.props.faces.length);
         let faceTwo = Math.floor(Math.random() * this.props.faces.length);
         
-        this.setState({diceOne: faceOne, diceTwo: faceTwo});
+        this.setState({diceOne: faceOne, diceTwo: faceTwo, rolling: true});
+
+        //wait one second then sent rolling to false
+        setTimeout(() => {
+            this.setState({rolling: false})
+        }, 1000);
     }
 
     render() {
@@ -23,7 +28,9 @@ class RollDice extends Component {
                     <Die face={this.state.diceOne}/>
                     <Die face={this.state.diceTwo}/>
                 </div>
-                <button onClick={this.roll}>Roll Dice</button>
+                <button onClick={this.roll} disabled={this.state.rolling}>
+                    {this.state.rolling ? "Rolling..." : "Roll Dice!"}
+                </button>
             </div>
         )
     }
