@@ -1,10 +1,10 @@
 import './App.css';
-import Die from './Die';
+import RollDice from './RollDice';
 
 function App() {
   return (
     <div className="App">
-      <Die face={Math.floor(Math.random() * 6 )}/>
+      <RollDice />
     </div>
   );
 }
