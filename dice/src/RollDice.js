@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Die from './Die';
 import { faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix } from '@fortawesome/free-solid-svg-icons';
+import './RollDice.css'
 
 class RollDice extends Component {
     state = { diceOne: 0, diceTwo: 0 };
@@ -17,9 +18,11 @@ class RollDice extends Component {
 
     render() {
         return (
-            <div>
-                <Die face={this.state.diceOne}/>
-                <Die face={this.state.diceTwo}/>
+            <div className='RollDice'>
+                <div className='RollDice-dice-container'>
+                    <Die face={this.state.diceOne}/>
+                    <Die face={this.state.diceTwo}/>
+                </div>
                 <button onClick={this.roll}>Roll Dice</button>
             </div>
         )

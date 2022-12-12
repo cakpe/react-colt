@@ -8,8 +8,8 @@ class Die extends Component {
         const dice = [faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix];
 
         return (
-            <div>
-                <FontAwesomeIcon icon={dice[this.props.face]} className='Die'/>
+            <div className='Die'>
+                <FontAwesomeIcon icon={dice[this.props.face]}/>
             </div>
         );
     }
