@@ -30,7 +30,7 @@ To start the node server, -- npm start
 If you want to style something that would affect the entire app, do it in index.css
 It's also good practice to delete the default styling in App.css that comes with create-react-app
 ----------------------------------------
-STATE IN CLASS COMPONENTS
+    STATE IN CLASS COMPONENTS
 Syntax:
 If you are building a component with state, you need a standard react constructor:
     constructor(props) {
@@ -55,3 +55,28 @@ Method 2 (fat arrow syntax when you define the click):
     handleClick = () => {
         console.log("Clicked");
     }
+-------------------------------------------
+    SET STATE RULES (based on already existing state)
+*setState is asynchronous so it's risky to assume a previous setState call has finished before rapidly calling another.
+Also, sometimes REACT will squash multiple calls to setState into one one call for performance reasons.
+
+****THEREFORE, if a call to setState depends on current state (such as an increment of a number stored in state), the
+safest thing is to use an alterate "callback form":
+    this.setState(curState => (return {count: curState.count + 1}));
+cleaner synax:
+    function incrementCounter(prevState) {
+        return { count: prevState.count + 1 };
+    }
+
+    this.setState(incrementCounter);
+
+
+*****You have to be extra careful when modifying your array of objects because mutating nested data structures 
+in your state can cause problems with REACT. DON'T DO IT!!!
+***The solution is to copy the data structure into a new variable and make the changes there with the spread operator.
+
+.map(), .reduce(), .filter() and the spread operator (...) are your best friends.
+
+RULES OF THUMB FOR STATE:
+*objects in state should be as minimal as possible. Only put what you need in state
+*State should live on the parent. So that parents can pass data down to children.
