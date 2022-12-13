@@ -9,7 +9,8 @@ class Die extends Component {
 
         return (
             <div className='Die'>
-                <FontAwesomeIcon icon={dice[this.props.face]}/>
+                {/* below is an important example of conditionally rendering a css class */}
+                <FontAwesomeIcon icon={dice[this.props.face]} className={`${this.props.rolling ? 'shaking' : ''}`}/>
             </div>
         );
     }
