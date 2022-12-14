@@ -57,6 +57,7 @@ Method 2 (fat arrow syntax when you define the click):
     }
 -------------------------------------------
     SET STATE RULES (based on already existing state)
+    The rules below are typically for counters and objects not single variables
 *setState is asynchronous so it's risky to assume a previous setState call has finished before rapidly calling another.
 Also, sometimes REACT will squash multiple calls to setState into one one call for performance reasons.
 
