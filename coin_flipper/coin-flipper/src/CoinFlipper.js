@@ -9,7 +9,7 @@ class CoinFlipper extends Component {
 
     flip() {
         const headsUrl = 'https://tinyurl.com/react-coin-heads-jpg';
-        const tailsUrl = 'https://unsplash.com/photos/7E3QGntO66M';
+        const tailsUrl = 'https://media.geeksforgeeks.org/wp-content/uploads/20200916123125/tails-200x200.jpg';
         //select heads or tails
         let headsOrTails = Math.floor(Math.random() * 2) === 1 ? true : false;
         this.setState(curState => ({ heads: headsOrTails, imgUrl: headsOrTails ? headsUrl:tailsUrl }));
