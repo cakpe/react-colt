@@ -62,7 +62,7 @@ class Hangman extends Component {
         <h1>Hangman</h1>
         <img src={this.props.images[this.state.nWrong]} />
         <p className='Hangman-word'>{this.guessedWord()}</p>
-        <p className='Hangman-btns'>{this.generateButtons()}</p>
+        <p className='Hangman-btns'>{this.generateButtons()}</p> {/* notice the parenthesis; so that it is executed immediately */}
       </div>
     );
   }
