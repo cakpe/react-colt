@@ -56,3 +56,10 @@
   color: #eeeeee;
   box-shadow: 0 6px #9e9e9e;
 }
+
+#reset {
+  width: auto;
+  display: block; /*should not be on same line*/
+  margin-left: auto;
+  margin-right: auto; /* having margins left and reight auto, centers the element */
+}

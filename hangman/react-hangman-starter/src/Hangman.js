@@ -85,7 +85,7 @@ class Hangman extends Component {
         : <p>You lose: {this.state.answer}</p>
         }
         </p>
-        <button onClick={this.reset}>Restart?</button>
+        <button id="reset" onClick={this.reset}>Restart?</button>
       </div>
     );
   }
