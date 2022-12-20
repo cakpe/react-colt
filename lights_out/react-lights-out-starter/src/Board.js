@@ -42,10 +42,6 @@ class Board extends Component {
     board: this.createBoard()
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
 
   createBoard() {
@@ -86,9 +82,9 @@ class Board extends Component {
     flipCell(y+1, x);
 
     // win when every cell is turned off
-    // TODO: determine is the game has been won
+    let hasWon = board.every(row => row.every(cell => !cell))
 
-    this.setState({board: board, hasWon: false}); //todo: later
+    this.setState({board: board, hasWon: hasWon});
   }
 
 
@@ -96,6 +92,9 @@ class Board extends Component {
 
   render() {
     // if the game is won, just show a winning msg & render nothing else
+    if(this.state.hasWon) {
+      return (<h1>You won!!!</h1>);
+    }
 
     // make table board
     let tblBoard = [];
