@@ -98,9 +98,10 @@ class Board extends Component {
     for(let row = 0; row<this.props.nrows; row++) {
       let realRow = [];
       for(let col = 0; col<this.props.ncols; col++) {
-        realRow.push(<Cell isLit={this.state.board[row][col]}/>);
+        let coord = `${row}-${col};`
+        realRow.push(<Cell key={coord} isLit={this.state.board[row][col]}/>);
       }
-      tblBoard.push(<tr>{realRow}</tr>);
+      tblBoard.push(<tr key={row}>{realRow}</tr>);
     }
 
     return (
