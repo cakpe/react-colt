@@ -84,21 +84,32 @@ class Board extends Component {
     // win when every cell is turned off
     // TODO: determine is the game has been won
 
-    this.setState({board, hasWon});
+    this.setState({board: board, hasWon: false}); //todo: later
   }
 
 
   /** Render game board or winning message. */
 
   render() {
-
     // if the game is won, just show a winning msg & render nothing else
 
-    // TODO
-
     // make table board
+    let tblBoard = [];
+    for(let row = 0; row<this.props.nrows; row++) {
+      let realRow = [];
+      for(let col = 0; col<this.props.ncols; col++) {
+        realRow.push(<Cell isLit={this.state.board[row][col]}/>);
+      }
+      tblBoard.push(<tr>{realRow}</tr>);
+    }
 
-    // TODO
+    return (
+      <table>
+        <tbody>
+          {tblBoard}
+        </tbody>
+      </table>
+    );
   }
 }
 
