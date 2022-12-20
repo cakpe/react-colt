@@ -36,10 +36,14 @@ class Board extends Component {
     chanceLightStartsOn: 0.25
   };
 
+  // TODO: set initial state
+  state = {
+    hasWon: false,
+    board: this.createBoard()
+  };
+
   constructor(props) {
     super(props);
-
-    // TODO: set initial state
   }
 
   /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
@@ -47,7 +51,16 @@ class Board extends Component {
   createBoard() {
     let board = [];
     // TODO: create array-of-arrays of true/false values
-    return board
+    for(let row = 0; row<this.props.nrows; row++) {
+      let realRow = [];
+      for(let col = 0; col<this.props.ncols; col++) {
+        //what the below line is doing is generating a random number between 0 and 1, and then checking if it's
+        //less than our chanceLightStartsOn prop
+        realRow.push(Math.random() < this.props.chanceLightStartsOn);
+      }
+      board.push(realRow);
+    }
+    return board;
   }
 
   /** handle changing a cell: update board & determine if winner */
