@@ -110,7 +110,7 @@ class Board extends Component {
     }
 
     return (
-      <table>
+      <table className="Board">
         <tbody>
           {tblBoard}
         </tbody>
