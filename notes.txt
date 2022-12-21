@@ -55,6 +55,12 @@ Method 2 (fat arrow syntax when you define the click):
     handleClick = () => {
         console.log("Clicked");
     }
+
+***You do not need to bind every single method that you reference inside of render().  You can call this.whatever() 
+without binding it if you are executing the function IMMEDIATELY.  Where it becomes tricky is when you are passing 
+the function to something and NOT calling it right away.  The most common example is event handlers.  
+When we pass a function like onClick={this.doSomething} we are not executing the function immediately.  
+We are passing the function which will later be executed when a user clicks.
 -------------------------------------------
     SET STATE RULES (based on already existing state)
     The rules below are typically for counters and objects not single variables
@@ -90,3 +96,31 @@ RULES OF THUMB FOR STATE:
             e.preventDefault();
             this.setState({ [e.target.name]: e.target.value });
         }    
+
+---------------------------------------------------
+    Spread operator
+*Do not use to concat (it works slower under the hood)
+*use to copy one array into another (it preserves the older array):
+    let arr = ['a','b','c'];
+    let arr2 = [...arr];
+*we know the regular use of spread -- to expand one array into another:
+    let arr = ['a','b'];
+    let arr2 = [...arr,'c','d'];
+
+***lastly, and especially for react, we use the operator to reate copies of existing objects with new or updated values 
+or to make a copy of an object with more properties:
+    const user1 = {
+	    name: 'Jen',
+	    age: 22
+    };
+
+    const clonedUser = { ...user1 };
+    console.log(clonedUser);
+
+example 2:
+    addItem(item) { //we spread item below because it is an object
+        let newItem = { ...item, id: uuid() };
+        this.setState(state => ({ //the better way of setting state instead of mutating objects
+            items: [...state.items, newItem]
+        }));
+    }

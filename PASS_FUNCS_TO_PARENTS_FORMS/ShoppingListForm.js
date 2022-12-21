@@ -7,20 +7,27 @@ class ShoppingListForm extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleSubmit(evt) {
+    //the main difference between this and passing data downwards is that all the data lies here in this child component.
+    //so you're passing state (all the data) up as we see on line 15. BUT CAN'T LIE DON'T CONFUSE YOURSELF. IT'S THE SAME THING.
     evt.preventDefault();
     this.props.addItem(this.state);
     this.setState({ name: "", qty: "" });
   }
+
   handleChange(evt) {
+    //although we have multiple inputs below, we can have one concise handleChange function because the name attributes
+    //for each input matches the name in state.
     this.setState({
       [evt.target.name]: evt.target.value
     });
   }
+  
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor='name'>Name: </label>
+        <label htmlFor='name'>Name: </label> {/*when using labels, htmlFor must match the id of the input*/}
         <input
           id='name'
           name='name'

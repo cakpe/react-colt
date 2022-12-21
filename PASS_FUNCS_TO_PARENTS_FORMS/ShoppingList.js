@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ShoppingListForm from "./ShoppingListForm";
-import uuid from "uuid/v4";
+import uuid from "uuid/v4"; //you need to run "npm install uuid" in your proj directory first
+//import uuid from uuid/dist/v4 is the way to import uuid now
 
 class ShoppingList extends Component {
   constructor(props) {
@@ -13,12 +14,14 @@ class ShoppingList extends Component {
     };
     this.addItem = this.addItem.bind(this);
   }
+
   addItem(item) {
     let newItem = { ...item, id: uuid() };
     this.setState(state => ({
       items: [...state.items, newItem]
     }));
   }
+
   renderItems() {
     return (
       <ul>
@@ -30,6 +33,7 @@ class ShoppingList extends Component {
       </ul>
     );
   }
+
   render() {
     return (
       <div>
