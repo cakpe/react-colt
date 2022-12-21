@@ -7,6 +7,12 @@ class BoxForm extends Component {
         bgColor: ''
     }
 
+    handleSubmit = (evt) => {
+        evt.preventDefault();
+        this.props.addBox(this.state);
+        this.setState({ height: 0, width: 0, bgColor: '' });
+    }
+
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value

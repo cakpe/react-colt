@@ -1,14 +1,22 @@
 import React, { Component } from 'react'
 
 class Box extends Component {
+    boxStyle = {
+        backgroundColor: this.props.bgColor,
+        height: Number(this.props.height),
+        width: Number(this.props.width),
+    }
+
+    removeBox = () => {
+        this.props.removeBox(this.props.id);
+    }
+
     render () {
         return (
             <div>
-                <div style={{
-                    width: this.props.width, height: this.props.height, bgColor: this.props.bgColor
-                }}>
+                <div style={this.boxStyle}>
                 </div>
-                <button>Remove the box!</button>
+                <button onClick={this.removeBox}>Remove the box!</button>
             </div>
         );
     }
