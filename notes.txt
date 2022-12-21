@@ -81,3 +81,12 @@ in your state can cause problems with REACT. DON'T DO IT!!!
 RULES OF THUMB FOR STATE:
 *objects in state should be as minimal as possible. Only put what you need in state
 *State should live on the parent. So that parents can pass data down to children.
+------------------------------------------------
+    REACT FORMS
+***Handling a form with multiple inputs in react:
+    to do this properly, each form must have a name attribute and that name attribute should be the same as that in the state.
+    This way, you can use one handle change function and update state like so:
+        handleChange = (e) => {
+            e.preventDefault();
+            this.setState({ [e.target.name]: e.target.value });
+        }    
