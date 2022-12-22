@@ -107,7 +107,7 @@ RULES OF THUMB FOR STATE:
     let arr = ['a','b'];
     let arr2 = [...arr,'c','d'];
 
-***lastly, and especially for react, we use the operator to reate copies of existing objects with new or updated values 
+***lastly, and especially for react, we use the operator to create copies of existing objects with new or updated values 
 or to make a copy of an object with more properties:
     const user1 = {
 	    name: 'Jen',
@@ -124,3 +124,25 @@ example 2:
             items: [...state.items, newItem]
         }));
     }
+
+-------------------------------------------------------------------
+    REACT COMPONENT LIFECYCLES
+Three main phases to know about:
+    mounting, updating, unmounting
+
+componentDidMount() -- Runs after the component is mounted. 'mounting' is the firs time the component is rendered to DOM.
+                        This is a good place to load data or setup subscriptions/timers. Calling setState() here weill trigger a re-render,
+                        so be cautious. It's not a bad thing, but just be aware that state has already been rendered before componentDidMount().
+                        AFTER THE FIRST RENDER, componentDidMount() is called and it is called ONLY ONCE, no matter the number of subsequent
+                        renders. THIS IS THE BEST PLACE TO MAKE AJAX AXIOS REQUESTS.
+
+**sometimes, render is called twice. if you would liek to get rid of this behavior, remove strict mode wrapper in index.js
+***if you have a constructor, do not set state in there.
+
+componentDidUpdate() -- Runs every time AFTER a component is rendered, EXCEPT THE FIRST TIME (componentDidMount()). There are three main things
+                        that would trigger this function: setState(), the component getting new props, or an external server force update.
+                        *This is a good place to carry out side events like logging to storage, autosaving etc.
+
+**refer to the todo app (TodoList.js) to see how prevProps and prevState are used in componentDidUpdate()
+
+componentWillUnmount() -- called when a component is destroyed and no longer in use. Similar to dispose in flutter.

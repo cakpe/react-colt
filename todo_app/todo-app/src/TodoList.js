@@ -20,6 +20,11 @@ class TodoList extends Component {
         }));
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        console.log(prevState.todos);
+        console.log(this.state.todos);
+    }
+
     updateTask = (id, updatedTask) => {
     
         this.setState(state => ({
