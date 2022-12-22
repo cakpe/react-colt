@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NewTodoForm from './NewTodoForm';
 import Todo from './Todo';
 import uuid from 'react-uuid';
+import './TodoList.css';
 
 class TodoList extends Component {
     state = { todos: [] };
@@ -54,12 +55,12 @@ class TodoList extends Component {
         });
 
         return(
-            <div>
-                <h1>Todo List!</h1>
-                <NewTodoForm addTask={this.addTask}/>
+            <div className='TodoList'>
+                <h1>Todo List!<span>a react program</span></h1>
                 <ul>
                     {todos}
                 </ul>
+                <NewTodoForm addTask={this.addTask}/>
             </div>
         )
     }
