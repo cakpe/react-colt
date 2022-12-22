@@ -7,7 +7,7 @@ class TodoList extends Component {
     state = { todos: [] };
 
     addTask = (todo) => {
-        let newTodo = {...todo, id: uuid()};
+        let newTodo = {...todo, id: uuid(), completed: false};
         this.setState(state => ({
             todos: [...state.todos, newTodo]
         }));
@@ -33,9 +33,24 @@ class TodoList extends Component {
         }));
     }
 
+    completeTask = (id) => {
+    
+        this.setState(state => ({
+            todos: state.todos.map(todo => {
+                var returnValue = {...todo};
+
+                if (todo.id === id) {
+                    returnValue.completed = !returnValue.completed;
+                }
+                return returnValue;
+            })
+        }));
+    }
+
     render () {
         let todos = this.state.todos.map(todo => {
-            return <Todo task={todo.task} key={todo.id} removeTask={this.removeTask} id={todo.id} updateTask={this.updateTask}/>
+            return <Todo task={todo.task} key={todo.id} removeTask={this.removeTask} 
+            id={todo.id} updateTask={this.updateTask} completed={todo.completed} completeTask={this.completeTask}/>
         });
 
         return(
