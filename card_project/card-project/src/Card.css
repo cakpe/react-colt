@@ -1,0 +1,6 @@
+.Card{
+    position: absolute; /*this ensure the cards stack on top of each other*/
+    left: 0;
+    right: 0;
+    margin: auto; /*the left, right and margin styles center the cards*/
+}
