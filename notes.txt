@@ -146,3 +146,12 @@ componentDidUpdate() -- Runs every time AFTER a component is rendered, EXCEPT TH
 **refer to the todo app (TodoList.js) to see how prevProps and prevState are used in componentDidUpdate()
 
 componentWillUnmount() -- called when a component is destroyed and no longer in use. Similar to dispose in flutter.
+
+
+
+
+
+
+
+
+****MY BEST NOTES ON CSS ARE IN THE DAD JOKES PROJECT
