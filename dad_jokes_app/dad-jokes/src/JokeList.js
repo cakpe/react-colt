@@ -11,10 +11,14 @@ class JokeList extends Component {
     }
 
     state = {
-        jokes: []
+        jokes: JSON.parse(window.localStorage.getItem("jokes") || "[]") //what this line is saying is parse jokes from local storage or parse the empty array string
     }
 
-    async componentDidMount() {
+    componentDidMount() {
+        if(this.state.jokes.length === 0) this.getJokes();
+    }
+
+    getJokes = async () => {
         let jokes = [];
         while(jokes.length < this.props.numJokes) {
             let res = await axios.get("https://icanhazdadjoke.com/", {headers: {Accept: "application/json"}});
@@ -22,6 +26,9 @@ class JokeList extends Component {
         }
 
         this.setState({ jokes: jokes });
+
+        //then store jokes in local storage. You can only store strings; hene the JSON.stringify
+        window.localStorage.setItem("jokes", JSON.stringify(jokes));   
     }
 
     handleVote = (id, delta) => {
