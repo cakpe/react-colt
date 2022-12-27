@@ -39,8 +39,17 @@ class JokeList extends Component {
                         return joke.id === id ? {...joke, votes: joke.votes + delta}: joke
                     })
                 }
-            )
+            ),
+            //the below syntax is a second argument we pass to setState() when we want something to run immediately after set state, that depends on the new state.
+            //in this case, we want eah vote to be sent to local storage.
+            () => {
+                window.localStorage.setItem("jokes", JSON.stringify(this.state.jokes))
+            }
         );
+    }
+
+    getNewJokes = () => {
+        this.getJokes();
     }
 
     render() {
@@ -49,7 +58,7 @@ class JokeList extends Component {
                 <div className='JokeList-sidebar'>
                     <h1 className='JokeList-title'><span>Dad</span> Jokes</h1>
                     <img src='https://assets.dryicons.com/uploads/icon/svg/8927/0eb14c71-38f2-433a-bfc8-23d9c99b3647.svg' alt='smiley face'/>
-                    <button className='JokeList-getmore'>New Jokes</button>
+                    <button className='JokeList-getmore' onClick={this.getNewJokes}>New Jokes</button>
                 </div>
 
                 <div className='JokeList-jokes'>
