@@ -20,7 +20,7 @@ function EditTodoForm (props) {
           value={value}
           onChange={handleChange}
           fullWidth
-          autoFocus
+          autoFocus //this is so the cursor is focused on the text field right away
         />
       </form>
   

@@ -18,7 +18,7 @@ function Todo(props) {
     }
 
     return (
-        <ListItem>
+        <ListItem style={{ heigjt: "64px" }}>
             {isEditing ? (
                 <EditTodoForm
                 editTodo={props.editTodo}
