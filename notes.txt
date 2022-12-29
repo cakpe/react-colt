@@ -148,6 +148,13 @@ componentDidUpdate() -- Runs every time AFTER a component is rendered, EXCEPT TH
 componentWillUnmount() -- called when a component is destroyed and no longer in use. Similar to dispose in flutter.
 
 
+---------------------------------------------------------------
+    USEEFFECT
+*****the above methods are only available for class based components. When using functional based components, you use useEffect.
+Contrary to what I believed, useEffect actually runs AFTER EVERY SINGLE RENDER, and not just the first render.
+You can have multiple useEffects in one file. And they can depend on different state variables
+
+
 
 
 

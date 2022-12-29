@@ -5,13 +5,14 @@ function SWMovies() {
   const [number, setNumber] = useState(1);
   const [movie, setMovie] = useState("");
 
+  //if you want the useEffect to call an async function, you define it within the useEffect and call it like so below
   useEffect(() => {
     async function getData() {
       const response = await axios.get(`https://swapi.co/api/films/${number}/`);
       setMovie(response.data);
     }
     getData();
-  }, [number]);
+  }, [number]); //what this is sayis is we only want useEffect to run when the number in state is changed. There can be more than one thing in the array
 
   return (
     <div>
