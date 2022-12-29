@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
@@ -9,11 +9,16 @@ import TodoForm from './TodoForm';
 import uuid from 'react-uuid';
 
 function TodoApp() {
-    const initialTodos = [
-        {id: 1, task: "fuck her", completed: true},
-        {id: 2, task: "and her", completed: false}
-    ];
+  const initialTodos = JSON.parse(window.localStorage.getItem("todos") || "");
+    // const initialTodos = [
+    //     {id: 1, task: "fuck her", completed: true},
+    //     {id: 2, task: "and her", completed: false}
+    // ];
     const [todos, setTodos] = useState(initialTodos);
+
+    useEffect(() => {
+      window.localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]); //remember this syntax means that only the numbers state should trigger the use effect (after the first render of course)
 
     const addTodo = (newTodoText) => {
       setTodos( [...todos, {id: uuid(), task: newTodoText, completed: false}]);
