@@ -5,13 +5,18 @@ import Paper from '@mui/material/Paper';
 import Toolbar from '@mui/material/Toolbar';
 import Grid from '@mui/material/Grid';
 import TodoList from './TodoList';
+import TodoForm from './TodoForm';
 
 function TodoApp() {
     const initialTodos = [
         {id: 1, task: "fuck her", completed: false},
-        {id: 1, task: "and her", completed: false}
+        {id: 2, task: "and her", completed: false}
     ];
     const [todos, setTodos] = useState(initialTodos);
+
+    const addTodo = (newTodoText) => {
+      setTodos( [...todos, {id: 4, task: newTodoText, completed: false}]);
+    }
 
     return <Paper
         style={{
@@ -27,6 +32,8 @@ function TodoApp() {
         <Typography color='inherit'>TODOS WITH HOOKS</Typography>
       </Toolbar>
     </AppBar>
+
+    <TodoForm addTodo={addTodo}/>
 
     <TodoList todos={todos}/>
     <Grid container justify='center' style={{ marginTop: "1rem" }}>
