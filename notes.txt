@@ -159,6 +159,15 @@ You can have multiple useEffects in one file. And they can depend on different s
 *in the index.js, --  import {BrowserRouter} from 'react-router-dom';
     and then wrap the APP component in a BrowserRouter tag 
 *You setup the routes in App.js
+*using the <Link> tag to surround the text makes it so that we navigate to our predefined
+    routes without re-loading the entire page
+
+*you establish a dynamic route like so:
+    Route path="/book/:id" element={<Book />}/>
+and you retrieve the parameter like so:
+    const {id} = useParams();
+        
+
 
 
 
