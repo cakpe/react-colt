@@ -27,11 +27,11 @@ function App() {
         <Route path="/about" element={<About />}/>
         <Route path="/book" element={<Book />}/>
 
-        <Route path="/book/:id" element={<Book />}/>
+        <Route path="/book/:id" element={<Book />}/> {/*this is how to do a dynamic link */}
+        <Route path="/book/new" element={<NewBook />}/> {/*this is to show that react would pick a specific router over dynamic */}
 
         <Route path="/booklist" element={<BookList />}/>
         <Route path="/contact" element={<Contact />}/>
-        <Route path="/newbook" element={<NewBook />}/>
         <Route path="/notfound" element={<NotFound />}/>
       </Routes>
     </>
