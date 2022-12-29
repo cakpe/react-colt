@@ -9,7 +9,7 @@ import TodoForm from './TodoForm';
 
 function TodoApp() {
     const initialTodos = [
-        {id: 1, task: "fuck her", completed: false},
+        {id: 1, task: "fuck her", completed: true},
         {id: 2, task: "and her", completed: false}
     ];
     const [todos, setTodos] = useState(initialTodos);
@@ -33,12 +33,10 @@ function TodoApp() {
       </Toolbar>
     </AppBar>
 
-    <TodoForm addTodo={addTodo}/>
-
-    <TodoList todos={todos}/>
-    <Grid container justify='center' style={{ marginTop: "1rem" }}>
+    <Grid container justify='center' style={{ marginTop: "1rem" }}> {/*this is what's gonna help you with sizing on small screens */}
       <Grid item xs={11} md={8} lg={4}>
-        
+        <TodoForm addTodo={addTodo}/>
+        <TodoList todos={todos}/>
       </Grid>
     </Grid>
   </Paper>
