@@ -158,6 +158,7 @@ You can have multiple useEffects in one file. And they can depend on different s
 *npm i react-router-dom
 *in the index.js, --  import {BrowserRouter} from 'react-router-dom';
     and then wrap the APP component in a BrowserRouter tag 
+*You setup the routes in App.js
 
 
 
