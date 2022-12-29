@@ -11,7 +11,7 @@ function TodoList(props) { //this is how you indicate a functional component to 
                 {props.todos.map(todo => {
                     return (
                         <> {/*this is called a jsx fragment for when you want to return multiple components at once*/}
-                            <Todo task={todo.task} key={todo.id} completed={todo.completed}/>
+                            <Todo task={todo.task} key={todo.id} completed={todo.completed} removeTodo={props.removeTodo} id={todo.id} toggleTodo={props.toggleTodo} editTodo={props.editTodo}/>
                             <Divider />
                         </>
                     )
