@@ -32,7 +32,8 @@ function App() {
 
         <Route path="/booklist" element={<BookList />}/>
         <Route path="/contact" element={<Contact />}/>
-        <Route path="/notfound" element={<NotFound />}/>
+
+        <Route path="*" element={<NotFound />}/> {/*routes to any incorrect route */}
       </Routes>
     </>
   );
