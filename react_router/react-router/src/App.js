@@ -25,12 +25,14 @@ function App() {
       <Routes> {/*only the elements wrapped in routes are re-rendered. the nav bar remains static on the page */}
         <Route path="/" element={<Home />}/>
         <Route path="/about" element={<About />}/>
-        <Route path="/book" element={<Book />}/>
 
-        <Route path="/book/:id" element={<Book />}/> {/*this is how to do a dynamic link */}
-        <Route path="/book/new" element={<NewBook />}/> {/*this is to show that react would pick a specific router over dynamic */}
 
-        <Route path="/booklist" element={<BookList />}/>
+        <Route path="/book"> {/*this is nested routing syntax */}
+          <Route index element={<BookList />}/> {/*this line says what /book is meant to be */}
+          <Route path="/book/:id" element={<Book />}/> {/*this is how to do a dynamic link */}
+          <Route path="/book/new" element={<NewBook />}/> {/*this is to show that react would pick a specific router over dynamic */}
+        </Route>
+
         <Route path="/contact" element={<Contact />}/>
 
         <Route path="*" element={<NotFound />}/> {/*routes to any incorrect route */}
