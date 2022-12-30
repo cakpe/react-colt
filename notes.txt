@@ -166,7 +166,12 @@ You can have multiple useEffects in one file. And they can depend on different s
     Route path="/book/:id" element={<Book />}/>
 and you retrieve the parameter like so:
     const {id} = useParams();
-        
+
+****If you want to go to a route that replaces current route, you use the replace keyword:
+    <Link to="/books" replace>Books</Link>  
+***If you want the entire page to be reloaded when you click a link, you use the reloadDocument keyword:
+    <Link to="/books" reloadDocument>Books</Link>         
+    
 
 
 

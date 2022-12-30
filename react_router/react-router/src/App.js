@@ -1,5 +1,5 @@
 import './App.css';
-import {Link, Route, Routes} from 'react-router-dom';
+import {Link, NavLink, Route, Routes} from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Book from './pages/Book';
@@ -13,7 +13,11 @@ function App() {
     <>
       <nav>
         <ul>
-          <li><Link to="/">Home</Link></li>
+          {/* this is an example of using navlink instead of link for exra styling */}
+          <li><NavLink to="/"
+          style={({ isActive }) => {
+            return isActive ? {color: "red"} : {}
+          }}>Home</NavLink></li>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/book">Book</Link></li>
           <li><Link to="/booklist">BookList</Link></li>
