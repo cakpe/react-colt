@@ -1,16 +1,18 @@
 import './App.css';
 import { useState, useEffect } from "react"
 import { db } from './firebase-config';
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, addDoc } from 'firebase/firestore'
 
 function App() {
   const [users, setUsers] = useState([]);
-
-  //below is how to point to a collection in firestore
-  const usersCollectionRef = collection(db, "users");
+  const [newName, setNewName] = useState("");
+  const [newAge, setNewAge] = useState(0);
 
   //remember that to call an async function in a useEffect, you have to create it in the useEffect.
   useEffect(() => {
+    //below is how to point to a collection in firestore
+    const usersCollectionRef = collection(db, "users");
+
     const getUsers = async() => {
       try {
         const data = await getDocs(usersCollectionRef);
@@ -23,10 +25,34 @@ function App() {
     };
 
     getUsers();
-  }, []);
+  }, [users]);
+
+  //function should be async because it deals with firestore
+  const createUser = async() => {
+    //below is how to point to a collection in firestore
+    const usersCollectionRef = collection(db, "users");
+
+    await addDoc(usersCollectionRef, {name: newName, age: newAge});
+    setNewAge(0);
+    setNewName('');
+  }
 
   return (
     <div className="App">
+
+      {/* I think forms are eaier than colt taught */}
+      <input placeholder='Name...' onChange={(e) => {
+        e.preventDefault();
+        setNewName(e.target.value);
+      }}
+      value={newName}/>
+      <input placeholder='age...' type={'number'} onChange={(e) => {
+        e.preventDefault();
+        setNewAge(e.target.value);
+      }}
+      value={newAge}/>
+      <button onClick={createUser}>Add user</button>
+
       {users.map(user => {
         return <div key={user.id}> 
           <h1>Name: {user.name}</h1>
