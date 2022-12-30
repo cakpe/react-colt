@@ -175,6 +175,13 @@ and you retrieve the parameter like so:
     REACT & FIREBASE
 *You have to install the firebase dependency -- npm install firebase
 *you need to go to project settings in firebase and add a web app.
+*you typically create a firebase-config.js file to host anything concerning a connection to firebase. Then you paste the content firebase
+gives you in there.
+MAKE SURE YOU USE A .env FILE FOR THE KEYS OR AT LEASR GITIGNORE THE CONFIG FILE
+
+*In that same config file, you also add firestore (check example for reference).
+and then you export it as a db variable.
+
 
 
 
