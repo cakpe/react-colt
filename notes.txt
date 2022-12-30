@@ -171,7 +171,12 @@ and you retrieve the parameter like so:
     <Link to="/books" replace>Books</Link>  
 ***If you want the entire page to be reloaded when you click a link, you use the reloadDocument keyword:
     <Link to="/books" reloadDocument>Books</Link>         
-    
+-----------------------------------------------------------------
+    REACT & FIREBASE
+*You have to install the firebase dependency -- npm install firebase
+*you need to go to project settings in firebase and add a web app.
+
+
 
 
 
