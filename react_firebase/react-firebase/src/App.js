@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from "react"
 import { db } from './firebase-config';
-import { collection, getDocs, addDoc } from 'firebase/firestore'
+import { collection, getDocs, addDoc, updateDoc, doc } from 'firebase/firestore'
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -32,9 +32,15 @@ function App() {
     //below is how to point to a collection in firestore
     const usersCollectionRef = collection(db, "users");
 
-    await addDoc(usersCollectionRef, {name: newName, age: newAge});
+    await addDoc(usersCollectionRef, {name: newName, age: Number(newAge)});
     setNewAge(0);
     setNewName('');
+  }
+
+  const updateUser = async(id, age) => {
+    const userDoc = doc(db, "users", id);
+    const newFields = { age: age+1 };
+    await updateDoc(userDoc, newFields);
   }
 
   return (
@@ -57,6 +63,7 @@ function App() {
         return <div key={user.id}> 
           <h1>Name: {user.name}</h1>
           <p>Age: {user.age}</p>
+          <button onClick={() => updateUser(user.id, user.age)}>Increment age</button>
         </div>
       })}
     </div>
